@@ -824,23 +824,28 @@ export default function App() {
 
 {/* BURGER AND PIZZA VIDEO SLIDESHOW */}
 
-<div className="rf-main-video absolute overflow-hidden rounded-3xl">
- <video
-  key={currentVideo}
-  className="w-full h-full object-cover"
-  src={currentVideo}
-  autoPlay
-  muted
-  playsInline
-  preload="auto"
-  onEnded={() => {
-    setCurrentVideo((prev) => 
-      prev.includes("hamburger") 
-        ? "https://assets.mixkit.co/videos/preview/mixkit-hands-taking-slices-of-pizza-from-a-box-51625-large.mp4" 
-        : "https://assets.mixkit.co/videos/preview/mixkit-juicy-hamburger-with-melted-cheese-42991-large.mp4"
-    );
-  }}
-/>
+<div className="relative z-10 w-full md:w-72 h-44 rounded-2xl overflow-hidden shadow-2xl border-2 border-white/25 shrink-0 bg-slate-900">
+                <video
+                  key={currentVideo}
+                  className="w-full h-full object-cover"
+                  src={currentVideo}
+                  autoPlay
+                  muted
+                  playsInline
+                  preload="auto"
+                  poster="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
+                  onError={(e) => {
+                    // Fallback to high-res image if video fails to load or play
+                    e.target.style.display = 'none';
+                  }}
+                  onEnded={() => {
+                    setCurrentVideo((prev) => 
+                      prev.includes("hamburger") 
+                        ? "https://assets.mixkit.co/videos/preview/mixkit-hands-taking-slices-of-pizza-from-a-box-51625-large.mp4" 
+                        : "https://assets.mixkit.co/videos/preview/mixkit-juicy-hamburger-with-melted-cheese-42991-large.mp4"
+                    );
+                  }}
+                />
 </div>
 
     {/* Video Overlay */}
