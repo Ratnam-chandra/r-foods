@@ -19,7 +19,6 @@ import {
   ShieldCheck,
   Flame,
   Heart,
-  SlidersHorizontal,
   UtensilsCrossed,
   Phone,
   User,
@@ -30,9 +29,6 @@ import {
   Lock,
   Mail,
   ChevronDown,
-  Sliders,
-  Sun,
-  Moon,
   Bot,
   MessageSquare
 } from 'lucide-react';
@@ -1023,6 +1019,18 @@ export default function App() {
                           
                           
                     {/* Veg / Non-Veg Indicator */}
+
+                    {/* Favorite Heart Button */}
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              alert("Added to Favorites!");
+            }}
+            className="absolute top-3 right-3 bg-white/90 backdrop-blur-md p-1.5 rounded-lg shadow-md hover:scale-110 transition-all z-10 group"
+            title="Add to Favorites"
+          >
+            <Heart className="w-4 h-4 text-slate-400 group-hover:text-rose-500 group-hover:fill-rose-500 transition-colors" />
+          </button>
                     
                     <div className="food-type-badge absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-lg flex items-center gap-1.5 shadow-md">
                     <span
@@ -1652,14 +1660,24 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>© 2026 R Foods Inc. All rights reserved.</p>
           
-          {/* Contact Support with Mail Icon */}
-          <a
-            href="mailto:support@rfoods.com"
-            className="flex items-center gap-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 px-3.5 py-2 rounded-xl text-xs font-bold transition-all border border-rose-200"
-          >
-            <Mail className="w-4 h-4 text-rose-600" />
-            <span>Contact Support (support@rfoods.com)</span>
-          </a>
+          {/* Support Buttons with Phone and Mail Icons */}
+          <div className="flex items-center gap-3">
+            <a
+              href="tel:+919876543210"
+              className="flex items-center gap-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 px-3.5 py-2 rounded-xl text-xs font-bold transition-all border border-rose-200"
+            >
+              <Phone className="w-4 h-4 text-rose-600" />
+              <span>Call Hotline (+91 1234567890)</span>
+            </a>
+
+            <a
+              href="mailto:support@rfoods.com"
+              className="flex items-center gap-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 px-3.5 py-2 rounded-xl text-xs font-bold transition-all border border-slate-200"
+            >
+              <Mail className="w-4 h-4 text-rose-600" />
+              <span>Email Support</span>
+            </a>
+          </div>
 
           <div className="flex items-center gap-4 text-xs font-semibold">
             <span className="hover:text-rose-600 cursor-pointer">GITAM Bengaluru Zone</span>
