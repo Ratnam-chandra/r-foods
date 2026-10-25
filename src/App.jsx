@@ -977,6 +977,11 @@ export default function App() {
                       />
                     </div>
 
+                    <div className="flex items-center gap-1 text-xs font-semibold text-slate-500 mt-1">
+                    <Clock className="w-3.5 h-3.5 text-rose-500" />
+                    <span>15-20 mins delivery</span>
+                    </div>
+
                     {/* Sort Dropdown */}
                     <select
                       value={sortBy}
@@ -1018,6 +1023,13 @@ export default function App() {
                           
                           
                     {/* Veg / Non-Veg Indicator */}
+
+                    {/* Trending Flame Badge */}
+                    <div className="absolute top-3 left-3 bg-rose-600 text-white px-2.5 py-1 rounded-lg flex items-center gap-1 text-[10px] font-bold shadow-md z-10">
+                    <Flame className="w-3.5 h-3.5 fill-white" />
+                    <span>Trending</span>
+                    </div>
+
                     <div className="food-type-badge absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-lg flex items-center gap-1.5 shadow-md">
                     <span
                         className={`w-2.5 h-2.5 rounded-full ${
