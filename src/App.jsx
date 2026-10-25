@@ -228,6 +228,42 @@ export default function App() {
   const [appliedDiscount, setAppliedDiscount] = useState(0);
   const [discountName, setDiscountName] = useState('');
   const [tipAmount, setTipAmount] = useState(30);
+  // --- AI ASSISTANT STATE ---
+  const [isAiOpen, setIsAiOpen] = useState(false);
+  const [aiInput, setAiInput] = useState('');
+  const [aiMessages, setAiMessages] = useState([
+    { sender: 'bot', text: '👋 Hi! I am R-Bot, your R Foods AI Assistant. Ask me for recommendations, budget meals, or discount codes!' }
+  ]);
+
+  const handleAiSend = (e) => {
+    e.preventDefault();
+    if (!aiInput.trim()) return;
+
+    const userText = aiInput.trim();
+    const newMessages = [...aiMessages, { sender: 'user', text: userText }];
+    setAiMessages(newMessages);
+    setAiInput('');
+
+    // Instant Smart AI Response Logic
+    setTimeout(() => {
+      let botReply = "I can help you find tasty dishes! Try searching for Biryani, Burgers, or dishes under ₹200.";
+      const query = userText.toLowerCase();
+
+      if (query.includes('coupon') || query.includes('offer') || query.includes('code') || query.includes('discount')) {
+        botReply = "🎉 You can use promo code **RATNAM100** for flat ₹100 OFF, or **RFODS50** for ₹50 OFF!";
+      } else if (query.includes('cheap') || query.includes('budget') || query.includes('under 200') || query.includes('under 150')) {
+        botReply = "💡 Budget Student Meals:\n• GITAM Special Student Biryani Combo (₹199)\n• Paneer Tikka Kathi Roll (₹150)\n• Sprouts & Pomegranate Salad (₹150)\n• Ghee Roast Masala Dosa (₹110)";
+      } else if (query.includes('gitam') || query.includes('delivery') || query.includes('time')) {
+        botReply = "⚡ Delivery to GITAM Hostels & Doddaballapura takes about 15-25 mins!";
+      } else if (query.includes('veg') || query.includes('vegetarian')) {
+        botReply = "🌱 Popular Pure Veg choices:\n• Peri Peri Paneer Supreme Pizza (₹399)\n• Death By Chocolate (₹260)\n• Button Idli Sambar Dip (₹130)";
+      } else if (query.includes('biryani')) {
+        botReply = "🍛 Top Biryanis:\n• Andhra Special Chicken Biryani (₹320)\n• GITAM Special Student Combo (₹199)\n• Paneer Subz Dum Biryani (₹279)";
+      }
+
+      setAiMessages(prev => [...prev, { sender: 'bot', text: botReply }]);
+    }, 600);
+  };
   const [currentVideo, setCurrentVideo] = useState(`${import.meta.env.BASE_URL}videos/video1.mp4`);
   
   // Delivery Location State
@@ -1523,6 +1559,75 @@ export default function App() {
               </div>
             )}
           </div>
+        </div>
+      )}
+
+      {/* ================= FLOATING AI ASSISTANT ================= */}
+      {/* Floating Widget Button */}
+      <button
+        onClick={() => setIsAiOpen(!isAiOpen)}
+        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-rose-600 to-orange-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all flex items-center justify-center border-2 border-white"
+        title="R Foods AI Assistant"
+      >
+        <Sparkles className="w-6 h-6 animate-spin" />
+      </button>
+
+      {/* AI Chat Popup Window */}
+      {isAiOpen && (
+        <div className="fixed bottom-24 right-6 z-50 w-80 sm:w-96 bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden flex flex-col h-[420px] animate-in fade-in zoom-in-95">
+          {/* Header */}
+          <div className="bg-gradient-to-r from-rose-600 to-orange-500 text-white p-4 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
+                <Sparkles className="w-4 h-4 text-amber-300" />
+              </div>
+              <div>
+                <h3 className="text-sm font-black">R-Bot AI Assistant</h3>
+                <p className="text-[10px] text-rose-100 font-semibold">Online • Ask anything about menu</p>
+              </div>
+            </div>
+            <button onClick={() => setIsAiOpen(false)} className="hover:bg-white/20 p-1 rounded-full transition-colors">
+              <X className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Chat Messages */}
+          <div className="flex-1 overflow-y-auto p-4 space-y-3 bg-slate-50 text-xs">
+            {aiMessages.map((msg, idx) => (
+              <div key={idx} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                <div className={`max-w-[80%] px-3.5 py-2.5 rounded-2xl ${msg.sender === 'user' ? 'bg-rose-600 text-white font-semibold rounded-br-none' : 'bg-white text-slate-800 border border-slate-200 shadow-sm rounded-bl-none font-medium whitespace-pre-line'}`}>
+                  {msg.text}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Quick Prompt Chips */}
+          <div className="px-3 py-2 bg-white border-t border-slate-100 flex gap-1.5 overflow-x-auto scrollbar-none">
+            <button onClick={() => setAiInput("Show cheap meals")} className="px-2.5 py-1 rounded-full bg-slate-100 text-[10px] font-bold text-slate-600 hover:bg-rose-50 hover:text-rose-600 shrink-0">
+              💰 Budget Meals
+            </button>
+            <button onClick={() => setAiInput("Any coupon codes?")} className="px-2.5 py-1 rounded-full bg-slate-100 text-[10px] font-bold text-slate-600 hover:bg-rose-50 hover:text-rose-600 shrink-0">
+              🏷️ Coupons
+            </button>
+            <button onClick={() => setAiInput("Popular Biryani")} className="px-2.5 py-1 rounded-full bg-slate-100 text-[10px] font-bold text-slate-600 hover:bg-rose-50 hover:text-rose-600 shrink-0">
+              🍛 Biryanis
+            </button>
+          </div>
+
+          {/* Input Form */}
+          <form onSubmit={handleAiSend} className="p-3 bg-white border-t border-slate-100 flex gap-2">
+            <input
+              type="text"
+              placeholder="Ask R-Bot..."
+              value={aiInput}
+              onChange={(e) => setAiInput(e.target.value)}
+              className="flex-1 bg-slate-100 border border-transparent focus:border-rose-500 focus:bg-white px-3 py-2 rounded-xl text-xs font-semibold outline-none"
+            />
+            <button type="submit" className="bg-rose-600 hover:bg-rose-700 text-white px-3.5 py-2 rounded-xl text-xs font-bold transition-all">
+              Send
+            </button>
+          </form>
         </div>
       )}
 
