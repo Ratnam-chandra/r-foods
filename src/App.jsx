@@ -610,7 +610,7 @@ export default function App() {
       
       {/* ================= HEADER ================= */}
       <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 min-h-[5rem] py-2 flex flex-wrap lg:flex-nowrap items-center justify-between gap-2 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-2.5 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 overflow-hidden">
           
           {/* Logo & Delivery Location placed RIGHT AFTER Logo */}
           <div className="flex items-center gap-4 sm:gap-6">
@@ -636,7 +636,7 @@ export default function App() {
               <MapPin className="w-5 h-5 text-rose-500 shrink-0" />
               <div className="text-left cursor-pointer" onClick={() => setIsLocationDropdownOpen(!isLocationDropdownOpen)}>
                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Delivery Location</p>
-                <p className="text-[11px] sm:text-sm font-bold text-slate-800 flex items-center gap-1 max-w-[110px] sm:max-w-[220px] truncate">
+                <p className="text-[11px] sm:text-sm font-bold text-slate-800 flex items-center gap-1 max-w-[95px] sm:max-w-[220px] truncate">
                   {currentLocation} <ChevronDown className={`w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-500 transition-transform ${isLocationDropdownOpen ? 'rotate-180' : ''}`} />
                 </p>
               </div>
@@ -1327,8 +1327,8 @@ export default function App() {
         <div className="fixed inset-0 z-50 overflow-hidden">
           <div className="absolute inset-0 bg-slate-900/50 backdrop-blur-sm transition-opacity" onClick={() => setIsCartOpen(false)}></div>
           
-          <div className="absolute inset-y-0 right-0 max-w-full flex pl-10">
-            <div className="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+          <div className="absolute inset-y-0 right-0 w-full max-w-md flex">
+            <div className="w-full bg-white shadow-2xl flex flex-col h-full overflow-hidden">
               
               <div className="p-6 border-b border-slate-100 flex items-center justify-between bg-slate-50">
                 <div className="flex items-center gap-3">
