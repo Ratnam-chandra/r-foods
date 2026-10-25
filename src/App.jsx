@@ -1647,11 +1647,20 @@ export default function App() {
           </form>
         </div>
       )}
-
-      {/* Footer */}
+    {/* Footer */}
       <footer className="bg-white border-t border-slate-100 mt-20 py-8 text-center text-slate-400 text-xs font-medium">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p>© 2026 R Foods Inc. All rights reserved.</p>
+          
+          {/* Contact Support with Mail Icon */}
+          <a
+            href="mailto:support@rfoods.com"
+            className="flex items-center gap-1.5 bg-rose-50 hover:bg-rose-100 text-rose-600 px-3.5 py-2 rounded-xl text-xs font-bold transition-all border border-rose-200"
+          >
+            <Mail className="w-4 h-4 text-rose-600" />
+            <span>Contact Support (support@rfoods.com)</span>
+          </a>
+
           <div className="flex items-center gap-4 text-xs font-semibold">
             <span className="hover:text-rose-600 cursor-pointer">GITAM Bengaluru Zone</span>
             <span className="hover:text-rose-600 cursor-pointer">Yelahanka Hub</span>
