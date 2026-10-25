@@ -608,12 +608,13 @@ export default function App() {
 
       `}</style>
       
- {/* ================= HEADER ================= */}
+  {/* ================= HEADER ================= */}
       <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row items-center justify-between gap-3">
           
-          {/* Logo & Right Actions */}
-          <div className="flex items-center justify-between w-full sm:w-auto gap-2">
+          {/* Logo & Delivery Location */}
+          <div className="flex items-center justify-between w-full md:w-auto gap-2 sm:gap-6">
+            
             {/* Logo */}
             <div className="flex items-center gap-2 cursor-pointer shrink-0" onClick={() => setViewState('browse')}>
               <div className="r-foods-logo-icon w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-tr from-rose-600 to-orange-500 flex items-center justify-center text-white shadow-md shadow-rose-500/25">
@@ -627,19 +628,19 @@ export default function App() {
               </div>
             </div>
 
-            {/* Delivery Location Selector - Clean Mobile Row */}
-            <div className="relative flex items-center gap-1.5 pl-3 border-l border-slate-200">
-              <MapPin className="w-4 h-4 text-rose-500 shrink-0" />
+            {/* Delivery Location Selector */}
+            <div className="relative flex items-center gap-1.5 pl-3 sm:pl-6 border-l border-slate-200">
+              <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-rose-500 shrink-0" />
               <div className="text-left cursor-pointer" onClick={() => setIsLocationDropdownOpen(!isLocationDropdownOpen)}>
-                <p className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Delivery Location</p>
-                <p className="text-xs font-bold text-slate-800 flex items-center gap-1 max-w-[110px] sm:max-w-[200px] truncate">
-                  {currentLocation} <ChevronDown className={`w-3.5 h-3.5 text-slate-500 transition-transform ${isLocationDropdownOpen ? 'rotate-180' : ''}`} />
+                <p className="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wider">Delivery Location</p>
+                <p className="text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-1 max-w-[110px] sm:max-w-[220px] truncate">
+                  {currentLocation} <ChevronDown className={`w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-500 transition-transform ${isLocationDropdownOpen ? 'rotate-180' : ''}`} />
                 </p>
               </div>
 
               {/* Location Dropdown Modal */}
               {isLocationDropdownOpen && (
-                <div className="absolute top-12 left-0 w-72 sm:w-80 bg-white rounded-2xl shadow-2xl border border-slate-100 p-3 z-50 animate-in fade-in zoom-in-95">
+                <div className="absolute top-12 left-0 w-80 bg-white rounded-2xl shadow-2xl border border-slate-100 p-3 z-50 animate-in fade-in zoom-in-95">
                   <div className="p-2 border-b border-slate-100 mb-2">
                     <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Select Delivery Location</p>
                     <p className="text-[11px] text-rose-600 font-semibold">GITAM & Yelahanka / Doddaballapura Zones</p>
@@ -659,9 +660,10 @@ export default function App() {
                 </div>
               )}
             </div>
+
           </div>
 
-          {/* Desktop Search Bar */}
+          {/* Center Search Bar */}
           <div className="flex-1 max-w-md hidden lg:block">
             <div className="relative">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -680,8 +682,8 @@ export default function App() {
             </div>
           </div>
 
-          {/* Right Actions: Theme, Cart & Auth */}
-          <div className="flex items-center gap-2 sm:gap-3 ml-auto sm:ml-0">
+          {/* Right Actions: Explore Menu, Cart & Auth */}
+          <div className="flex items-center gap-2 sm:gap-3">
             <button 
               onClick={scrollToMenu}
               className="hidden md:flex items-center gap-1.5 bg-rose-50 text-rose-600 hover:bg-rose-100 px-4 py-2.5 rounded-2xl text-xs font-bold transition-all border border-rose-200"
@@ -721,6 +723,10 @@ export default function App() {
                 >
                   <div className="w-9 h-9 rounded-full bg-rose-100 text-rose-600 font-bold flex items-center justify-center border-2 border-rose-500 text-xs shadow-sm">
                     {currentUser.name.charAt(0).toUpperCase()}
+                  </div>
+                  <div className="hidden xl:block text-left">
+                    <p className="text-[10px] font-bold text-slate-400 uppercase">Hello,</p>
+                    <p className="text-xs font-bold text-slate-800 truncate max-w-[90px]">{currentUser.name}</p>
                   </div>
                 </button>
 
