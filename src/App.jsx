@@ -32,7 +32,9 @@ import {
   ChevronDown,
   Sliders,
   Sun,
-  Moon
+  Moon,
+  Bot,
+  MessageSquare
 } from 'lucide-react';
 
 // --- LOCATIONS LIST ---
@@ -1563,13 +1565,22 @@ export default function App() {
       )}
 
       {/* ================= FLOATING AI ASSISTANT ================= */}
-      {/* Floating Widget Button */}
-      <button
+      {/* Floating Chatbot Widget Button */}
+     <button
         onClick={() => setIsAiOpen(!isAiOpen)}
-        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-rose-600 to-orange-500 text-white p-4 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all flex items-center justify-center border-2 border-white"
-        title="R Foods AI Assistant"
+        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-rose-600 to-orange-500 text-white p-3.5 rounded-full shadow-2xl hover:scale-110 active:scale-95 transition-all flex items-center justify-center border-2 border-white group"
+        title="R Foods AI Chatbot Assistant"
       >
-        <Sparkles className="w-6 h-6 animate-spin" />
+        {isAiOpen ? (
+          <X className="w-6 h-6" />
+        ) : (
+          <div className="relative flex items-center justify-center">
+            {/* Modern Robot Icon */}
+            <Bot className="w-7 h-7 text-white group-hover:rotate-12 transition-transform" />
+            {/* Small Glowing Online Indicator Badge */}
+            <span className="absolute -top-1 -right-1 w-3 h-3 bg-emerald-400 border-2 border-white rounded-full animate-pulse"></span>
+          </div>
+        )}
       </button>
 
       {/* AI Chat Popup Window */}
@@ -1579,7 +1590,7 @@ export default function App() {
           <div className="bg-gradient-to-r from-rose-600 to-orange-500 text-white p-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-amber-300" />
+                <Bot className="w-5 h-5 text-white" />
               </div>
               <div>
                 <h3 className="text-sm font-black">R-Bot AI Assistant</h3>
