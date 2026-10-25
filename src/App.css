@@ -183,9 +183,6 @@
   }
 }
 
-
-/* R FOODS MIXKIT VIDEO */
-
 /* R FOODS VIDEO HERO */
 
 .rf-video-scene {
@@ -387,7 +384,6 @@
   background: #111;
 }
 
-
 /* Burger and Pizza Video Layout */
 
 .rf-main-video {
@@ -403,6 +399,37 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px; /* Adds breathing room on mobile edges */
+}
+
+.menu-row {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to drop to the next line on mobile */
+  gap: 16px;
+}
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 16px;
+}
+
+/* Styles for mobile screens smaller than 768px */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+  }
+  
+  h1 {
+    font-size: 24px; /* Make text smaller on mobile */
+  }
 }
 
 
