@@ -482,4 +482,40 @@ html, body {
   padding: 0;
 }
 
+/* --- Mobile Responsive Header Rules --- */
+@media (max-width: 768px) {
+  /* Prevent full-page horizontal overflow */
+  html, body {
+    overflow-x: hidden !important;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Make header elements stack properly */
+  header, nav, .navbar, .top-bar {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 8px 12px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* Ensure long location names wrap or trim gracefully */
+  .delivery-location, .location-container {
+    max-width: 50% !important;
+    font-size: 11px !important;
+    word-break: break-word;
+  }
+
+  /* Keep search bar responsive */
+  .search-bar, input[type="search"] {
+    width: 100% !important;
+    margin-top: 8px !important;
+    box-sizing: border-box !important;
+  }
+}
+
 
