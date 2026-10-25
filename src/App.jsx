@@ -1019,19 +1019,6 @@ export default function App() {
                           
                           
                     {/* Veg / Non-Veg Indicator */}
-
-                    {/* Favorite Heart Button */}
-          <button 
-            onClick={(e) => {
-              e.stopPropagation();
-              alert("Added to Favorites!");
-            }}
-            className="absolute top-3 right-3 bg-white/90 backdrop-blur-md p-1.5 rounded-lg shadow-md hover:scale-110 transition-all z-10 group"
-            title="Add to Favorites"
-          >
-            <Heart className="w-4 h-4 text-slate-400 group-hover:text-rose-500 group-hover:fill-rose-500 transition-colors" />
-          </button>
-                    
                     <div className="food-type-badge absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-lg flex items-center gap-1.5 shadow-md">
                     <span
                         className={`w-2.5 h-2.5 rounded-full ${
