@@ -228,7 +228,7 @@ export default function App() {
   const [appliedDiscount, setAppliedDiscount] = useState(0);
   const [discountName, setDiscountName] = useState('');
   const [tipAmount, setTipAmount] = useState(30);
- const [currentVideo, setCurrentVideo] = useState("https://assets.mixkit.co/videos/preview/mixkit-juicy-hamburger-with-melted-cheese-42991-large.mp4");
+  const [currentVideo, setCurrentVideo] = useState(`${import.meta.env.BASE_URL}videos/video1.mp4`);
   
   // Delivery Location State
   const [currentLocation, setCurrentLocation] = useState('GITAM UNIVERSITY Bengaluru');
@@ -812,64 +812,51 @@ export default function App() {
 
             
 {/* RIGHT SIDE - MIXKIT FOOD VIDEO */}
-
 <div className="rf-video-scene relative min-h-[280px] md:min-h-[350px] flex items-center justify-center">
 
   {/* Background Glow */}
   <div className="rf-video-glow absolute"></div>
 
-  {/* Main Video */}
-  <div className="rf-main-video absolute overflow-hidden rounded-3xl">
+  {/* Main Video Box */}
+  <div className="rf-main-video relative overflow-hidden rounded-3xl">
 
-
-{/* BURGER AND PIZZA VIDEO SLIDESHOW */}
-
-<div className="relative z-10 w-full md:w-72 h-44 rounded-2xl overflow-hidden shadow-2xl border-2 border-white/25 shrink-0 bg-slate-900">
-                <video
-                  key={currentVideo}
-                  className="w-full h-full object-cover"
-                  src={currentVideo}
-                  autoPlay
-                  muted
-                  playsInline
-                  preload="auto"
-                  poster="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80"
-                  onError={(e) => {
-                    // Fallback to high-res image if video fails to load or play
-                    e.target.style.display = 'none';
-                  }}
-                  onEnded={() => {
-                    setCurrentVideo((prev) => 
-                      prev.includes("hamburger") 
-                        ? "https://assets.mixkit.co/videos/preview/mixkit-hands-taking-slices-of-pizza-from-a-box-51625-large.mp4" 
-                        : "https://assets.mixkit.co/videos/preview/mixkit-juicy-hamburger-with-melted-cheese-42991-large.mp4"
-                    );
-                  }}
-                />
-</div>
+    {/* BURGER AND PIZZA VIDEO SLIDESHOW */}
+    <div className="relative z-10 w-full md:w-72 h-44 rounded-2xl overflow-hidden shadow-2xl border-2 border-white/25 shrink-0 bg-slate-900">
+      <video
+        key={currentVideo}
+        className="w-full h-full object-cover"
+        src={currentVideo}
+        autoPlay
+        muted
+        playsInline
+        preload="auto"
+        onEnded={() => {
+          setCurrentVideo((prev) => 
+            prev.includes("video1") 
+              ? `${import.meta.env.BASE_URL}videos/video2.mp4` 
+              : `${import.meta.env.BASE_URL}videos/video1.mp4`
+          );
+        }}
+      />
+    </div>
 
     {/* Video Overlay */}
-    <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/70 via-transparent to-black/10"></div>
+    <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/70 via-transparent to-black/10 pointer-events-none"></div>
 
     {/* Video Text */}
-    <div className="absolute bottom-4 left-4 right-4 z-20 text-white">
-
+    <div className="absolute bottom-4 left-4 right-4 z-20 text-white pointer-events-none">
       <p className="text-xs font-bold text-amber-300">
         🍔 R FOODS SPECIAL
       </p>
-
       <h3 className="text-xl md:text-2xl font-black">
         Fresh. Hot. Delicious.
       </h3>
-
       <p className="text-xs font-bold tracking-widest text-white/80 mt-1">
         MADE WITH LOVE
       </p>
-
     </div>
 
   </div>
-
 
 </div>
 
