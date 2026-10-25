@@ -811,54 +811,44 @@ export default function App() {
             </div>
 
             
-{/* RIGHT SIDE - MIXKIT FOOD VIDEO */}
-<div className="rf-video-scene relative min-h-[280px] md:min-h-[350px] flex items-center justify-center">
+          {/* RIGHT SIDE - MIXKIT FOOD VIDEO (FULL CARD) */}
+            <div className="relative min-h-[280px] md:min-h-[350px] w-full rounded-3xl overflow-hidden shadow-2xl border-2 border-white/20 bg-slate-900 flex items-center justify-center">
 
-  {/* Background Glow */}
-  <div className="rf-video-glow absolute"></div>
+              {/* Background Video (Stretched to Full Container) */}
+              <video
+                key={currentVideo}
+                className="absolute inset-0 w-full h-full object-cover"
+                src={currentVideo}
+                autoPlay
+                muted
+                playsInline
+                preload="auto"
+                onEnded={() => {
+                  setCurrentVideo((prev) => 
+                    prev.includes("video1") 
+                      ? `${import.meta.env.BASE_URL}videos/video2.mp4` 
+                      : `${import.meta.env.BASE_URL}videos/video1.mp4`
+                  );
+                }}
+              />
 
-  {/* Main Video Box */}
-  <div className="rf-main-video relative overflow-hidden rounded-3xl">
+              {/* Dark Gradient Overlay for High Text Legibility */}
+              <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/80 via-black/30 to-black/20 pointer-events-none"></div>
 
-    {/* BURGER AND PIZZA VIDEO SLIDESHOW */}
-    <div className="relative z-10 w-full md:w-72 h-44 rounded-2xl overflow-hidden shadow-2xl border-2 border-white/25 shrink-0 bg-slate-900">
-      <video
-        key={currentVideo}
-        className="w-full h-full object-cover"
-        src={currentVideo}
-        autoPlay
-        muted
-        playsInline
-        preload="auto"
-        onEnded={() => {
-          setCurrentVideo((prev) => 
-            prev.includes("video1") 
-              ? `${import.meta.env.BASE_URL}videos/video2.mp4` 
-              : `${import.meta.env.BASE_URL}videos/video1.mp4`
-          );
-        }}
-      />
-    </div>
+              {/* Overlay Text */}
+              <div className="absolute bottom-6 left-6 right-6 z-20 text-white pointer-events-none space-y-1">
+                <p className="text-xs font-bold text-amber-300 tracking-wider uppercase">
+                  🍔 R FOODS SPECIAL
+                </p>
+                <h3 className="text-2xl md:text-3xl font-black tracking-tight">
+                  Fresh. Hot. Delicious.
+                </h3>
+                <p className="text-xs font-bold tracking-widest text-slate-300 uppercase">
+                  MADE WITH LOVE
+                </p>
+              </div>
 
-    {/* Video Overlay */}
-    <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/70 via-transparent to-black/10 pointer-events-none"></div>
-
-    {/* Video Text */}
-    <div className="absolute bottom-4 left-4 right-4 z-20 text-white pointer-events-none">
-      <p className="text-xs font-bold text-amber-300">
-        🍔 R FOODS SPECIAL
-      </p>
-      <h3 className="text-xl md:text-2xl font-black">
-        Fresh. Hot. Delicious.
-      </h3>
-      <p className="text-xs font-bold tracking-widest text-white/80 mt-1">
-        MADE WITH LOVE
-      </p>
-    </div>
-
-  </div>
-
-</div>
+            </div>
 
 
             {/* Category Filter Carousel */}
