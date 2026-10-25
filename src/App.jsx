@@ -228,9 +228,7 @@ export default function App() {
   const [appliedDiscount, setAppliedDiscount] = useState(0);
   const [discountName, setDiscountName] = useState('');
   const [tipAmount, setTipAmount] = useState(30);
-  const [currentVideo, setCurrentVideo] = useState(
-  "/videos/fries-burger.mp4"
-);
+ const [currentVideo, setCurrentVideo] = useState("https://assets.mixkit.co/videos/preview/mixkit-juicy-hamburger-with-melted-cheese-42991-large.mp4");
   
   // Delivery Location State
   const [currentLocation, setCurrentLocation] = useState('GITAM UNIVERSITY Bengaluru');
@@ -827,22 +825,22 @@ export default function App() {
 {/* BURGER AND PIZZA VIDEO SLIDESHOW */}
 
 <div className="rf-main-video absolute overflow-hidden rounded-3xl">
-  <video
-    key={currentVideo}
-    className="rf-hero-video w-full h-full object-cover"
-    src={currentVideo}
-    autoPlay
-    muted
-    playsInline
-    preload="auto"
-    onEnded={() => {
-      setCurrentVideo((previous) =>
-        previous === "/videos/fries-burger.mp4"
-          ? "/videos/Pizza.mp4"
-          : "/videos/fries-burger.mp4"
-      );
-    }}
-  />
+ <video
+  key={currentVideo}
+  className="w-full h-full object-cover"
+  src={currentVideo}
+  autoPlay
+  muted
+  playsInline
+  preload="auto"
+  onEnded={() => {
+    setCurrentVideo((prev) => 
+      prev.includes("hamburger") 
+        ? "https://assets.mixkit.co/videos/preview/mixkit-hands-taking-slices-of-pizza-from-a-box-51625-large.mp4" 
+        : "https://assets.mixkit.co/videos/preview/mixkit-juicy-hamburger-with-melted-cheese-42991-large.mp4"
+    );
+  }}
+/>
 </div>
 
     {/* Video Overlay */}
