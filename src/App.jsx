@@ -610,11 +610,11 @@ export default function App() {
       
       {/* ================= HEADER ================= */}
       <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-slate-100">
-        <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8 py-2.5 flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row items-center justify-between gap-3">">
           
           {/* Logo & Delivery Location placed RIGHT AFTER Logo */}
-          <div className="flex items-center gap-4 sm:gap-6">
-            
+          <div className="flex items-center justify-between w-full md:w-auto gap-2 sm:gap-6">
+
             {/* Logo */}
             <div className="flex items-center gap-2 cursor-pointer shrink-0" onClick={() => setViewState('browse')}>
               <div className="r-foods-logo-icon w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-600 to-orange-500 flex items-center justify-center text-white shadow-md shadow-rose-500/25">
@@ -636,7 +636,7 @@ export default function App() {
               <MapPin className="w-5 h-5 text-rose-500 shrink-0" />
               <div className="text-left cursor-pointer" onClick={() => setIsLocationDropdownOpen(!isLocationDropdownOpen)}>
                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Delivery Location</p>
-                <p className="text-[11px] sm:text-sm font-bold text-slate-800 flex items-center gap-1 max-w-[95px] sm:max-w-[220px] truncate">
+                <p className="text-xs sm:text-sm font-bold text-slate-800 flex items-center gap-1 max-w-[120px] sm:max-w-[220px] truncate">
                   {currentLocation} <ChevronDown className={`w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-500 transition-transform ${isLocationDropdownOpen ? 'rotate-180' : ''}`} />
                 </p>
               </div>
