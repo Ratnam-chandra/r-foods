@@ -7,268 +7,79 @@
   border: 2px solid transparent;
   transition: border-color 0.3s;
   margin-bottom: 24px;
-
-  &:hover {
-    border-color: var(--accent-border);
-  }
-  &:focus-visible {
-    outline: 2px solid var(--accent);
-    outline-offset: 2px;
-  }
 }
 
-.hero {
-  position: relative;
-
-  .base,
-  .framework,
-  .vite {
-    inset-inline: 0;
-    margin: 0 auto;
-  }
-
-  .base {
-    width: 170px;
-    position: relative;
-    z-index: 0;
-  }
-
-  .framework,
-  .vite {
-    position: absolute;
-  }
-
-  .framework {
-    z-index: 1;
-    top: 34px;
-    height: 28px;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(44deg) rotateY(39deg)
-      scale(1.4);
-  }
-
-  .vite {
-    z-index: 0;
-    top: 107px;
-    height: 26px;
-    width: auto;
-    transform: perspective(2000px) rotateZ(300deg) rotateX(40deg) rotateY(39deg)
-      scale(0.8);
-  }
+.counter:hover {
+  border-color: var(--accent-border);
 }
 
-#center {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-  place-content: center;
-  place-items: center;
-  flex-grow: 1;
-
-  @media (max-width: 1024px) {
-    padding: 32px 20px 24px;
-    gap: 18px;
-  }
-}
-
-#next-steps {
-  display: flex;
-  border-top: 1px solid var(--border);
-  text-align: left;
-
-  & > div {
-    flex: 1 1 0;
-    padding: 32px;
-    @media (max-width: 1024px) {
-      padding: 24px 20px;
-    }
-  }
-
-  .icon {
-    margin-bottom: 16px;
-    width: 22px;
-    height: 22px;
-  }
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    text-align: center;
-  }
-}
-
-#docs {
-  border-right: 1px solid var(--border);
-
-  @media (max-width: 1024px) {
-    border-right: none;
-    border-bottom: 1px solid var(--border);
-  }
-}
-
-#next-steps ul {
-  list-style: none;
-  padding: 0;
-  display: flex;
-  gap: 8px;
-  margin: 32px 0 0;
-
-  .logo {
-    height: 18px;
-  }
-
-  a {
-    color: var(--text-h);
-    font-size: 16px;
-    border-radius: 6px;
-    background: var(--social-bg);
-    display: flex;
-    padding: 6px 12px;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    transition: box-shadow 0.3s;
-
-    &:hover {
-      box-shadow: var(--shadow);
-    }
-    .button-icon {
-      height: 18px;
-      width: 18px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    margin-top: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-
-    li {
-      flex: 1 1 calc(50% - 8px);
-    }
-
-    a {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box;
-    }
-  }
-}
-
-#spacer {
-  height: 88px;
-  border-top: 1px solid var(--border);
-  @media (max-width: 1024px) {
-    height: 48px;
-  }
-}
-
-.ticks {
-  position: relative;
-  width: 100%;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    top: -4.5px;
-    border: 5px solid transparent;
-  }
-
-  &::before {
-    left: 0;
-    border-left-color: var(--border);
-  }
-  &::after {
-    right: 0;
-    border-right-color: var(--border);
-  }
+.counter:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* R FOODS VIDEO HERO */
-
 .rf-video-scene {
   position: relative;
   perspective: 1000px;
   isolation: isolate;
-
   width: 100%;
   min-height: 350px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   overflow: visible;
 }
 
 .rf-video-glow {
   position: absolute;
-
   width: 320px;
   height: 320px;
-
   border-radius: 50%;
-
   background: radial-gradient(
     circle,
     rgba(255, 180, 60, 0.4),
     rgba(255, 60, 70, 0.2) 45%,
     transparent 70%
   );
-
   filter: blur(30px);
-
   animation: rfVideoGlow 4s ease-in-out infinite;
 }
 
 .rf-main-video {
   position: relative;
   z-index: 2;
-
   width: 100%;
   height: 320px;
-
   overflow: hidden;
   border-radius: 24px;
-
+  background: #111;
   border: 2px solid rgba(255, 255, 255, 0.3);
-
   box-shadow:
     0 20px 50px rgba(0, 0, 0, 0.3),
     0 0 30px rgba(255, 100, 50, 0.2);
-
   animation: rfMainVideoFloat 5s ease-in-out infinite;
 }
 
 .rf-hero-video {
   display: block;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
 }
 
 .rf-video-badge {
   bottom: 8%;
   left: 5%;
-
   z-index: 6;
-
   padding: 10px 14px;
-
   border-radius: 999px;
-
   background: rgba(255, 255, 255, 0.15);
-
   backdrop-filter: blur(12px);
-
   border: 1px solid rgba(255, 255, 255, 0.3);
-
   color: white;
-
   font-size: 10px;
   font-weight: 900;
-
   animation: rfMiniFloat 4s ease-in-out infinite;
 }
 
@@ -311,7 +122,7 @@
 
   .rf-main-video {
     width: 78%;
-    height: 75%;
+    height: 260px;
   }
 
   .rf-video-badge {
@@ -326,6 +137,8 @@
     animation: none !important;
   }
 }
+
+/* Hero banner */
 .hero-banner {
   position: relative;
   display: flex;
@@ -361,79 +174,35 @@
   border-radius: 20px;
 }
 
-@media (max-width: 767px) {
-  .rf-video-scene {
-    min-height: 280px;
-  }
-
-  .rf-main-video {
-    height: 260px;
-  }
-
-  .rf-video-badge {
-    font-size: 9px;
-  }
-}
-
-.rf-main-video {
-  position: absolute;
-  width: 75%;
-  height: 80%;
-  overflow: hidden;
-  border-radius: 24px;
-  background: #111;
-}
-
-/* Burger and Pizza Video Layout */
-
-.rf-main-video {
-  position: relative;
-  width: 100%;
-  height: 320px;
-  overflow: hidden;
-  border-radius: 24px;
-}
-
-.rf-hero-video {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
+/* Main layout */
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 16px; /* Adds breathing room on mobile edges */
+  padding: 0 16px;
 }
 
 .menu-row {
   display: flex;
-  flex-wrap: wrap; /* Allows items to drop to the next line on mobile */
+  flex-wrap: wrap;
   gap: 16px;
 }
 
 .food-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 16px;
 }
 
-/* Styles for mobile screens smaller than 768px */
-@media (max-width: 768px) {
-  .navbar {
-    flex-direction: column;
-    padding: 10px;
-  }
-  
-  h1 {
-    font-size: 24px; /* Make text smaller on mobile */
-  }
+/* Shared page reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-/* Prevent horizontal screen scrolling */
-html, body {
+html,
+body {
   width: 100%;
   max-width: 100vw;
   overflow-x: hidden;
@@ -441,59 +210,59 @@ html, body {
   padding: 0;
 }
 
-/* Ensure images and banners shrink properly on mobile */
-img, .banner, .card {
+img,
+.banner,
+.card {
   max-width: 100%;
   height: auto;
 }
 
-/* Mobile responsive layout fixes */
+/* Mobile layout */
 @media (max-width: 768px) {
-  /* Fix Header / Navbar */
-  header, nav, .navbar {
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  header,
+  nav,
+  .navbar {
     flex-wrap: wrap;
     padding: 10px;
     gap: 8px;
     justify-content: space-between;
   }
 
-  /* Make delivery location and sign-in fit naturally */
-  .delivery-location, .nav-items {
+  .delivery-location,
+  .nav-items {
     font-size: 12px;
   }
 
-  /* Force containers to fill mobile screen without overflowing */
-  .container, .hero-section, .banner-section {
+  .container,
+  .hero-section,
+  .banner-section {
     width: 100% !important;
     max-width: 100% !important;
     padding: 10px;
     box-sizing: border-box;
   }
-}
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
-html, body {
-  width: 100%;
-  overflow-x: hidden;
-  margin: 0;
-  padding: 0;
-}
-
-/* --- Mobile Responsive Header Rules --- */
-@media (max-width: 768px) {
-  /* Prevent full-page horizontal overflow */
-  html, body {
+  html,
+  body {
     overflow-x: hidden !important;
     width: 100%;
     margin: 0;
     padding: 0;
   }
 
-  /* Make header elements stack properly */
-  header, nav, .navbar, .top-bar {
+  header,
+  nav,
+  .navbar,
+  .top-bar {
     display: flex !important;
     flex-wrap: wrap !important;
     justify-content: space-between !important;
@@ -503,40 +272,40 @@ html, body {
     box-sizing: border-box !important;
   }
 
-  /* Ensure long location names wrap or trim gracefully */
-  .delivery-location, .location-container {
+  .delivery-location,
+  .location-container {
     max-width: 50% !important;
     font-size: 11px !important;
     word-break: break-word;
   }
 
-  /* Keep search bar responsive */
-  .search-bar, input[type="search"] {
+  .search-bar,
+  input[type="search"] {
     width: 100% !important;
     margin-top: 8px !important;
     box-sizing: border-box !important;
   }
-}
 
-/* Universal Mobile Reset - Force all elements inside the screen */
-@media (max-width: 768px) {
-  *, *::before, *::after {
+  *,
+  *::before,
+  *::after {
     max-width: 100vw !important;
     box-sizing: border-box !important;
   }
 
-  /* Make header container wrap horizontally */
-  header, nav, div[class*="header"], div[class*="nav"], div[class*="top"] {
+  header,
+  nav,
+  div[class*="header"],
+  div[class*="nav"],
+  div[class*="top"] {
     display: flex !important;
     flex-wrap: wrap !important;
     width: 100% !important;
     overflow: hidden !important;
   }
 
-  /* Shrink text/icons in the header */
-  header *, nav * {
+  header *,
+  nav * {
     font-size: 12px !important;
   }
 }
-
-
